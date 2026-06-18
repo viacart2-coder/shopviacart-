@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viacart - Your Style, Your Bag</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+        <p>Shop our new Arrivals</p>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Brand Logo & Title -->
+            <div class="brand-box">
+                <div class="logo-circle">
+                    <span class="logo-text">Viacart</span> 
+                </div>
+                <h1 class="site-title">Viacart</h1>
+            </div>
+
+            <!-- Search and E-commerce Controls -->
+            <div class="controls-box">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                </div>
+                <div class="header-icons">
+                    <a href="index.html" aria-label="User Account"><i class="fa-regular fa-user"></i></a>
+                    <a href="index1.html" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
+                    <a href="#" aria-label="Shopping Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="deal1.html">Deals</a></li>
+            <li><a href="help.html">Help us</a></li>
+            <li><a href="oder.html">Oder now</a></li>
+             <li><a href="products.html">Bags</a></li>
+        </ul>
+    </nav>
+  
+    <style>
+    .contact-main-container {
+        width: 100%;
+        background-color: #fcfbfa; 
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 60px 20px;
+    }
+
+    .contact-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        background: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+    }
+
+    /* Left Side: Contact Info Panel */
+    .contact-info-panel {
+        background-color: #72574a; 
+        color: #ffffff;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .contact-info-panel h2 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        font-weight: 600;
+    }
+
+    .contact-info-panel p {
+        color: #e6dfda;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .info-details {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .info-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .info-item .icon {
+        font-size: 1.4rem;
+        background: rgba(255, 255, 255, 0.1);
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+
+    .info-item text {
+        font-size: 1rem;
+        color: #ffffff;
+    }
+
+    /* Right Side: Contact Form */
+    .contact-form-panel {
+        padding: 40px;
+    }
+
+    .contact-form-panel h3 {
+        font-size: 1.6rem;
+        color: #222222;
+        margin-bottom: 25px;
+        font-weight: 600;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #555555;
+    }
+
+    .form-group input, 
+    .form-group textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        font-size: 1rem;
+        background-color: #fafafa;
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus, 
+    .form-group textarea:focus {
+        border-color: #72574a;
+        background-color: #ffffff;
+    }
+
+    .submit-btn {
+        background-color: #72574a;
+        color: #ffffff;
+        border: none;
+        padding: 14px 30px;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .submit-btn:hover {
+        background-color: #5d463b;
+    }
+
+    /* Responsive Design for Tablets and Desktops */
+    @media (min-width: 768px) {
+        .contact-wrapper {
+            grid-template-columns: 4fr 6fr; 
+        }
+        
+        .form-grid {
+            grid-template-columns: 1fr 1fr; 
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .submit-btn {
+            width: auto; 
+        }
+    }
+</style>
+
+<main class="contact-main-container">
+    <div class="contact-wrapper">
+        
+        <div class="contact-info-panel">
+            <div>
+                <h2>Contact Us</h2>
+                <p>Koi bhi sawal ho ya madad chahiye ho? Hamein message karein, hamari team jald hi aap se raabta karegi.</p>
+                
+                <div class="info-details">
+                    <div class="info-item">
+                        <div class="icon">📞</div>
+                        <div class="text">+92 332 8011280</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">✉️</div>
+                        <div class="text">Viacart2@gmail.com</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="icon">📍</div>
+                        <div class="text">Lahore, Punjab, Pakistan</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form-panel">
+            <h3>Send us a Message</h3>
+            <!-- Form ID 'contactForm' yahan add kar di hai -->
+            <form id="contactForm" action="#" method="POST">
+                <div class="form-grid">
+                    
+                    <div class="form-group">
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" placeholder="John" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" placeholder="Doe" required>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="example@mail.com" required>
+                    </div>
+                    
+                    <div class="form-group full-width">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" rows="5" placeholder="Write your message here..." required></textarea>
+                    </div>
+                    
+                    <div class="full-width">
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+
+    </div>
+</main>
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <p>Viacart brings you stylish, high-quality handbags designed for everyday elegance. Our goal is to offer trendy designs at affordable prices, so you can look confident wherever you go.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index1.html">Deals</a></li>
+                    <li><a href="help.html">Help us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p><i class="fa-regular fa-envelope"></i> Viacart2@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> +92 332 8011280</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Sticky Button -->
+    <a href="https://wa.me/923328011280" class="whatsapp-sticky" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="JavaScript.js"></script>
+
+    <!-- Google Sheet Data Fetch Script -->
+    <script>
+    const excelFileUrl = 'Untitled spreadsheet.csv'; 
+
+    Papa.parse(excelFileUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+            let products = results.data;
+            let container = document.getElementById('shop-products'); 
+            
+            if(!container) return; 
+            container.innerHTML = ""; 
+
+            products.forEach(product => {
+                if(product['name']) {
+                    let cardHTML = `
+                        <div class="product-card">
+                            <div class="product-title">${product['name']}</div>
+                            <div class="product-price">Rs. ${product['price']}</div>
+                            <div class="product-info">${product['information'] || ''}</div>
+                        </div>
+                    `;
+                    container.innerHTML += cardHTML;
+                }
+            });
+        }
+    });
+    </script>
+
+    <!-- WhatsApp Contact Form Redirection Script -->
+    <script>
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+        e.preventDefault(); 
+
+        // Form fields se data nikalna
+        const firstName = document.getElementById('first-name').value;
+        const lastName = document.getElementById('last-name').value;
+        const email = document.getElementById('email').value;
+        const userMessage = document.getElementById('message').value;
+
+        // Aapka WhatsApp number
+        const myWhatsAppNumber = "923328011280"; 
+
+        // Message text format
+        const message = `*New Help/Inquiry Message!* ✉️%0A%0A` +
+                        `*User Details:*%0A` +
+                        `• Name: ${firstName} ${lastName}%0A` +
+                        `• Email: ${email}%0A%0A` +
+                        `*Message:*%0A` +
+                        `${userMessage}`;
+
+        // WhatsApp link open karna
+        const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+    });
+    </script>
+
+</body>
+</html>

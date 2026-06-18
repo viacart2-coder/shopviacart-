@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viacart - Your Style, Your Bag</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+        <p>Shop our new Arrivals</p>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Brand Logo & Title -->
+            <div class="brand-box">
+                <div class="logo-circle">
+                    <span class="logo-text">Viacart</span> 
+                </div>
+                <h1 class="site-title">Viacart</h1>
+            </div>
+
+            <!-- Search and E-commerce Controls -->
+            <div class="controls-box">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                </div>
+                <div class="header-icons">
+                    <a href="index.html" aria-label="User Account"><i class="fa-regular fa-user"></i></a>
+                    <a href="index1.html" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
+                    <a href="#" aria-label="Shopping Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="deal1.html">Deals</a></li>
+            <li><a href="help.html">Help us</a></li>
+            <li><a href="oder.html">Oder now</a></li>
+            <li><a href="produts.html">Bags</a></li>
+    </nav>
+   
+    <style>
+    .main-container {
+        width: 100%;
+        background-color: #ffffff;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Banner Design */
+    .hero-banner {
+        background-image: url('https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=1200'); 
+        background-size: cover;
+        background-position: center;
+        height: 380px;
+        position: relative;
+        width: 100%;
+    }
+
+    .banner-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.15); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .banner-overlay h1 {
+        color: #ffffff;
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin: 0;
+    }
+
+    /* Content Area Wrapper */
+    .content-area {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 30px 20px;
+    }
+
+    /* Filter/Sorting Bar */
+    .filter-bar {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 30px;
+    }
+
+    .results-count {
+        font-size: 1.1rem;
+        color: #222222;
+        margin: 0;
+    }
+
+    .sort-dropdown {
+        width: 100%;
+        max-width: 290px;
+        padding: 12px;
+        border: 1px solid #dcdcdc;
+        font-size: 1rem;
+        background-color: #fff;
+        color: #333;
+        outline: none;
+        cursor: pointer;
+    }
+
+    /* Product Section */
+    .product-grid {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .product-card {
+        background: #fff;
+        border: 1px solid #f0f0f0;
+        width: 100%;
+        max-width: 270px; 
+        box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 240px;
+        background-color: #fcfcfc;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Sale Badge */
+    .sale-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background-color: #6e5549; 
+        color: #fff;
+        padding: 14px 8px;
+        border-radius: 50%;
+        font-size: 0.8rem;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Product Info */
+    .product-info {
+        padding: 20px 15px;
+        text-align: center;
+    }
+
+    .product-title {
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.4;
+        color: #111;
+        margin: 0 0 15px 0;
+    }
+
+    .price-box {
+        margin: 0 0 20px 0;
+        font-size: 1.1rem;
+    }
+
+    .old-price {
+        text-decoration: line-through;
+        color: #8c8c8c;
+        margin-right: 8px;
+    }
+
+    .current-price {
+        font-weight: 700;
+        color: #000;
+    }
+
+    /* Add to Cart Button */
+    .add-to-cart-btn {
+        background-color: #72574a; 
+        color: #fff;
+        border: none;
+        width: 100%;
+        padding: 12px 0;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s ease-in-out;
+    }
+
+    .add-to-cart-btn:hover {
+        background-color: #5d463b;
+    }
+
+    @media(min-width: 600px) {
+        .filter-bar {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+</style>
+
+<main class="main-container">
+    
+    <section class="hero-banner">
+        <div class="banner-overlay">
+            <h1>DEALS.</h1>
+        </div>
+    </section>
+
+    <div class="content-area">
+        
+        <div class="filter-bar">
+            <p class="results-count">Showing the single result</p>
+            <div class="dropdown-wrapper">
+                <select class="sort-dropdown">
+                    <option>Default sorting</option>
+                    <option>Sort by popularity</option>
+                    <option>Sort by average rating</option>
+                    <option>Sort by latest</option>
+                    <option>Sort by price: low to high</option>
+                    <option>Sort by price: high to low</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- ID 'shop-products' lagayi taake Google Sheet ka data bhi yahan aa sake -->
+        <div class="product-grid" id="shop-products">
+            
+            <!-- Static Product (Jo pehle se bana hua hai) -->
+            <div class="product-card">
+                <div class="image-container">
+                    <span class="sale-badge">Sale!</span>
+                    <img id="p1-img" src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600" alt="Elegant Cream Beige Tote Handbag">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title" id="p1-title">Elegant Cream Beige Tote Handbag</h2>
+                    <p class="price-box">
+                        <span class="old-price">Rs 1,800</span>
+                        <span class="current-price" id="p1-price">Rs 1,500</span>
+                    </p>
+                    <!-- Onclick event lagaya jo order page par bhejega -->
+                    <button class="add-to-cart-btn" onclick="buyProduct('p1-title', 'p1-price', 'p1-img')">Add to cart</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</main>
+
+    <!-- Footer Section -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <p>Viacart brings you stylish, high-quality handbags designed for everyday elegance. Our goal is to offer trendy designs at affordable prices, so you can look confident wherever you go.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index1.html">Deals</a></li>
+                    <li><a href="help.html">Help us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p><i class="fa-regular fa-envelope"></i> Viacart2@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> +92 332 8011280</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Sticky Button -->
+    <a href="https://wa.me/923328011280" class="whatsapp-sticky" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="JavaScript.js"></script>
+
+    <!-- Static Product ke liye function script -->
+    <script>
+    function buyProduct(titleId, priceId, imgId) {
+        const title = document.getElementById(titleId).innerText;
+        const price = document.getElementById(priceId).innerText;
+        const img = document.getElementById(imgId).src;
+
+        // Browser browser memory mein save karna
+        localStorage.setItem('prodTitle', title);
+        localStorage.setItem('prodPrice', price);
+        localStorage.setItem('prodImg', img);
+
+        // Order page par redirect karna
+        window.location.href = 'oder.html';
+    }
+    </script>
+
+    <!-- Google Sheet Data Fetch aur uspar click handles -->
+    <script>
+    const excelFileUrl = 'Untitled spreadsheet.csv'; 
+
+    Papa.parse(excelFileUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+            let products = results.data;
+            let container = document.getElementById('shop-products'); 
+            
+            if(!container) return; 
+
+            // Dynamic products jo excel se aayenge unhe add karna aur unpar data click handle karna
+            let index = 0;
+            products.forEach(product => {
+                if(product['name']) {
+                    index++;
+                    let dynamicTitleId = `sheet-title-${index}`;
+                    let dynamicPriceId = `sheet-price-${index}`;
+                    let dynamicImgId = `sheet-img-${index}`;
+                    
+                    // Agar image sheet mein nahi hai toh default image lagayi hai
+                    let productImgUrl = product['image'] || 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600';
+
+                    let cardHTML = `
+                        <div class="product-card">
+                            <div class="image-container">
+                                <span class="sale-badge">Sale!</span>
+                                <img id="${dynamicImgId}" src="${productImgUrl}" alt="${product['name']}">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-title" id="${dynamicTitleId}">${product['name']}</div>
+                                <div class="price-box">
+                                    <span class="current-price" id="${dynamicPriceId}">Rs. ${product['price']}</span>
+                                </div>
+                                <div class="product-info-text" style="font-size:0.9rem; color:#666; margin-bottom:10px;">
+                                    ${product['information'] || ''}
+                                </div>
+                                <button class="add-to-cart-btn" onclick="buyProduct('${dynamicTitleId}', '${dynamicPriceId}', '${dynamicImgId}')">Add to cart</button>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += cardHTML;
+                }
+            });
+        }
+    });
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viacart - All Products</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+    <div class="top-bar">
+        <p>Shop our new Arrivals</p>
+    </div>
+
+    <header class="main-header">
+        <div class="header-container">
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="brand-box">
+                <div class="logo-circle">
+                    <span class="logo-text">Viacart</span> 
+                </div>
+                <h1 class="site-title">Viacart</h1>
+            </div>
+
+            <div class="controls-box">
+                <div class="search-bar">
+                    <input type="text" id="productSearch" oninput="searchProducts()" placeholder="Search bags...">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                </div>
+                <div class="header-icons">
+                    <a href="index.html" aria-label="User Account"><i class="fa-regular fa-user"></i></a>
+                    <a href="index1.html" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
+                    <a href="#" aria-label="Shopping Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="deal1.html">Deals</a></li>
+            <li><a href="help.html">Help us</a></li>
+             <li><a href="oder.html">Order now</a></li>
+            <li><a href="products.html">Bags</a></li>
+        </ul>
+    </nav>
+   
+    <style>
+    .main-container {
+        width: 100%;
+        background-color: #fdfcfb;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Page Title Section */
+    .shop-header-banner {
+        background-color: #72574a;
+        color: #ffffff;
+        text-align: center;
+        padding: 40px 20px;
+    }
+
+    .shop-header-banner h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    /* Content Area Wrapper */
+    .content-area {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    /* Product Grid Setup - Yahan change kiya hai taake 3-4 items aik line me aayein */
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 25px;
+        width: 100%;
+    }
+
+    .product-card {
+        background: #ffffff;
+        border: 1px solid #f0eee9;
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .image-container {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        background-color: #f9f9f9;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Product Info Area */
+    .product-info {
+        padding: 15px;
+        text-align: center;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .product-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        line-height: 1.4;
+        color: #222222;
+        margin: 0 0 8px 0;
+        height: 45px; 
+        overflow: hidden;
+    }
+
+    .product-description {
+        font-size: 0.85rem;
+        color: #777777;
+        margin-bottom: 12px;
+        height: 38px;
+        overflow: hidden;
+    }
+
+    .price-box {
+        margin-bottom: 12px;
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #72574a;
+    }
+
+    /* Add to Cart Button */
+    .add-to-cart-btn {
+        background-color: #72574a; 
+        color: #ffffff;
+        border: none;
+        width: 100%;
+        padding: 10px 0;
+        font-size: 0.95rem;
+        font-weight: 600;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+    .add-to-cart-btn:hover {
+        background-color: #5d463b;
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 600px) {
+        .product-grid {
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 15px;
+        }
+        .image-container {
+            height: 180px;
+        }
+        .product-title {
+            font-size: 0.95rem;
+            height: 40px;
+        }
+    }
+</style>
+
+<main class="main-container">
+    
+    <section class="shop-header-banner">
+        <h1>OUR COLLECTION</h1>
+    </section>
+
+    <div class="content-area">
+        <div class="product-grid" id="all-products-container">
+            
+            <div class="product-card">
+                <div class="image-container">
+                    <img id="ex-img-1" src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600" alt="Elegant Cream Tote">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title" id="ex-title-1">Elegant Cream Beige Tote Bag</h2>
+                    <p class="product-description">Premium quality artificial leather tote handbag for daily use.</p>
+                    <div class="price-box" id="ex-price-1">Rs 1,500</div>
+                    <button class="add-to-cart-btn" onclick="buyProduct('ex-title-1', 'ex-price-1', 'ex-img-1')">Add to cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="image-container">
+                    <img id="ex-img-2" src="https://images.unsplash.com/photo-1566150905458-1bf1fc15a490?q=80&w=600" alt="Classic Luxury Black Bag">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title" id="ex-title-2">Classic Luxury Black Handbag</h2>
+                    <p class="product-description">Perfect luxury finish shoulder bag for parties and events.</p>
+                    <div class="price-box" id="ex-price-2">Rs 2,200</div>
+                    <button class="add-to-cart-btn" onclick="buyProduct('ex-title-2', 'ex-price-2', 'ex-img-2')">Add to cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="image-container">
+                    <img id="ex-img-3" src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=600" alt="Casual Brown Sling Bag">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title" id="ex-title-3">Casual Tan Brown Crossbody Bag</h2>
+                    <p class="product-description">Compact and stylish sling bag with adjustable strap.</p>
+                    <div class="price-box" id="ex-price-3">Rs 1,350</div>
+                    <button class="add-to-cart-btn" onclick="buyProduct('ex-title-3', 'ex-price-3', 'ex-img-3')">Add to cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="image-container">
+                    <img id="ex-img-4" src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?q=80&w=600" alt="Vintage Maroon Shoulder Bag">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title" id="ex-title-4">Vintage Maroon Shoulder Bag</h2>
+                    <p class="product-description">Elegant deep wine maroon bag with solid golden buckles.</p>
+                    <div class="price-box" id="ex-price-4">Rs 1,950</div>
+                    <button class="add-to-cart-btn" onclick="buyProduct('ex-title-4', 'ex-price-4', 'ex-img-4')">Add to cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="image-container">
+                    <img id="ex-img-5" src="https://images.unsplash.com/photo-1605733513597-a8f8d410fe3e?q=80&w=600" alt="Soft Pastel Pink Handbag">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title" id="ex-title-5">Soft Pastel Pink Handbag</h2>
+                    <p class="product-description">Cute aesthetic light pink bag for collage and outings.</p>
+                    <div class="price-box" id="ex-price-5">Rs 1,600</div>
+                    <button class="add-to-cart-btn" onclick="buyProduct('ex-title-5', 'ex-price-5', 'ex-img-5')">Add to cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="image-container">
+                    <img id="ex-img-6" src="https://images.unsplash.com/photo-1524498250077-3a818d37480d?q=80&w=600" alt="Minimalist White Crossbody">
+                </div>
+                <div class="product-info">
+                    <h2 class="product-title" id="ex-title-6">Minimalist Snow White Crossbody</h2>
+                    <p class="product-description">Pure white minimalist clutch bag with sleek silver chain.</p>
+                    <div class="price-box" id="ex-price-6">Rs 1,450</div>
+                    <button class="add-to-cart-btn" onclick="buyProduct('ex-title-6', 'ex-price-6', 'ex-img-6')">Add to cart</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <p>Viacart brings you stylish, high-quality handbags designed for everyday elegance. Our goal is to offer trendy designs at affordable prices, so you can look confident wherever you go.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index1.html">Deals</a></li>
+                    <li><a href="help.html">Help us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p><i class="fa-regular fa-envelope"></i> Viacart2@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> +92 332 8011280</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/923328011280" class="whatsapp-sticky" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="JavaScript.js"></script>
+
+    <script>
+    function buyProduct(titleId, priceId, imgId) {
+        const title = document.getElementById(titleId).innerText;
+        const price = document.getElementById(priceId).innerText;
+        const img = document.getElementById(imgId).src;
+
+        localStorage.setItem('prodTitle', title);
+        localStorage.setItem('prodPrice', price);
+        localStorage.setItem('prodImg', img);
+
+        window.location.href = 'oder.html';
+    }
+
+    function searchProducts() {
+        const searchQuery = document.getElementById('productSearch').value.toLowerCase();
+        const productCards = document.querySelectorAll('.product-card');
+
+        productCards.forEach(card => {
+            const productTitleElement = card.querySelector('.product-title');
+            if (productTitleElement) {
+                const productTitle = productTitleElement.innerText.toLowerCase();
+                if (productTitle.includes(searchQuery)) {
+                    card.style.display = "flex"; 
+                } else {
+                    card.style.display = "none";  
+                }
+            }
+        });
+    }
+    </script>
+
+    <script>
+    const excelFileUrl = 'Untitled spreadsheet.csv'; 
+
+    Papa.parse(excelFileUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+            let products = results.data;
+            let container = document.getElementById('all-products-container'); 
+            
+            if(!container) return; 
+
+            let index = 100; 
+            products.forEach(product => {
+                if(product['name'] && product['name'].trim() !== "") {
+                    index++;
+                    let dTitleId = `p-title-${index}`;
+                    let dPriceId = `p-price-${index}`;
+                    let dImgId = `p-img-${index}`;
+                    
+                    let productImgUrl = product['image'] || 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=600';
+
+                    let cardHTML = `
+                        <div class="product-card">
+                            <div class="image-container">
+                                <img id="${dImgId}" src="${productImgUrl}" alt="${product['name']}">
+                            </div>
+                            <div class="product-info">
+                                <h2 class="product-title" id="${dTitleId}">${product['name']}</h2>
+                                <p class="product-description">${product['information'] || 'High-quality elegant handbag.'}</p>
+                                <div class="price-box" id="${dPriceId}">Rs ${product['price']}</div>
+                                <button class="add-to-cart-btn" onclick="buyProduct('${dTitleId}', '${dPriceId}', '${dImgId}')">Add to cart</button>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += cardHTML;
+                }
+            });
+        }
+    });
+    </script>
+
+</body>
+</html>

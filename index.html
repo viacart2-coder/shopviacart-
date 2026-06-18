@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viacart - Your Style, Your Bag</title>
+    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+    <div class="top-bar">
+        <p>Shop our new Arrivals</p>
+    </div>
+
+    <header class="main-header">
+        <div class="header-container">
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="brand-box">
+                <div class="logo-circle">
+                    <span class="logo-text">Viacart</span> 
+                </div>
+                <h1 class="site-title">Viacart</h1>
+            </div>
+
+            <div class="controls-box">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                </div>
+                <div class="header-icons">
+                    <a href="#" aria-label="User Account"><i class="fa-regular fa-user"></i></a>
+                    <a href="#" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
+                    <a href="#" aria-label="Shopping Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="deal1.html">Deals</a></li>
+            <li><a href="help.html">Help us</a></li>
+            <li><a href="oder.html">Order now</a></li>
+             <li><a href="products.html">Bags</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-sub">Upgrade Your Routine</span>
+                <h2 class="hero-title">Your Style, Your Bag</h2>
+                <p class="hero-desc">Viacart offers stylish and affordable handbags for every day. Simple, trendy, and made for your style.</p>
+                <a href="#" class="shop-now-btn">Shop Now <i class="fa-solid fa-bag-shopping"></i></a>
+            </div>
+            <div class="hero-image">
+                <div style="width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); padding: 0; margin-bottom: -50px; overflow: hidden;">
+    <img src="IMG_20260617_220447.jpg" alt="Bags" style="width: 100%; height: auto; display: block; max-width: 100%;">
+</div>
+
+</div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <h3 class="section-title">Shop <br> <span>◆ Hits Of The Week ◆</span></h3>
+        <div class="products-grid">
+            
+            <div id="shop-products"></div>
+
+            <div class="product-card">
+                <div class="p-img-box"><img src="IMG-20260615-WA0230.jpg" alt="Crescent Bag"></div>
+                <h4>Crescent Bag</h4>
+                <span class="price">Rs 8,500</span>
+                <a href="oder.html" class="order-link" data-title="Crescent Bag" data-price="Rs 8,500" data-img="IMG-20260615-WA0230.jpg">Order Now</a>
+            </div>
+            
+            <div class="product-card">
+                <div class="p-img-box"><img src="IMG-20260615-WA0232.jpg" alt="Grace Bag"></div>
+                <h4>Grace Bag</h4>
+                <span class="price">Rs 8,500</span>
+                <a href="oder.html" class="order-link" data-title="Grace Bag" data-price="Rs 8,500" data-img="IMG-20260615-WA0232.jpg">Order Now</a>
+            </div>
+            
+            <div class="product-card">
+                <div class="p-img-box"><img src="IMG-20260615-WA0233.jpg" alt="Tote Bag"></div>
+                <h4>Tote Bag</h4>
+                <span class="price">Rs 8,500</span>
+                <a href="oder.html" class="order-link" data-title="Tote Bag" data-price="Rs 8,500" data-img="IMG-20260615-WA0233.jpg">Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    const orderButtons = document.querySelectorAll('.order-link');
+
+    orderButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Product ka data nikalna
+            const title = this.getAttribute('data-title');
+            const price = this.getAttribute('data-price');
+            const img = this.getAttribute('data-img');
+
+            // Data ko localStorage mein save karna
+            localStorage.setItem('prodTitle', title);
+            localStorage.setItem('prodPrice', price);
+            localStorage.setItem('prodImg', img);
+
+            // Corrected to 'oder.html' matching your filename
+            window.location.href = 'oder.html'; 
+        });
+    });
+    </script>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <p>Viacart brings you stylish, high-quality handbags designed for everyday elegance. Our goal is to offer trendy designs at affordable prices, so you can look confident wherever you go.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index1.html">Deals</a></li>
+                    <li><a href="oder.html">Bags</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p><i class="fa-regular fa-envelope"></i> Viacart2@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> +92 332 8011280</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/923328011280" class="whatsapp-sticky" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="JavaScript.js"></script>
+    
+    <script>
+    const excelFileUrl = 'Untitled spreadsheet.csv'; 
+
+    Papa.parse(excelFileUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+            let products = results.data;
+            let container = document.getElementById('shop-products'); 
+            
+            if(!container) return; 
+            container.innerHTML = ""; 
+
+            products.forEach(product => {
+                if(product['name']) {
+                    // CSV products ke liye bhi dynamic order card button add kar diya hai
+                    let cardHTML = `
+                        <div class="product-card">
+                            <div class="p-img-box"><img src="${product['image'] || 'placeholder.jpg'}" alt="${product['name']}"></div>
+                            <h4>${product['name']}</h4>
+                            <span class="price">Rs. ${product['price']}</span>
+                            <a href="oder.html" class="order-link" data-title="${product['name']}" data-price="Rs. ${product['price']}" data-img="${product['image'] || ''}">Order Now</a>
+                        </div>
+                    `;
+                    container.innerHTML += cardHTML;
+                }
+            });
+
+            // Re-bind click event for dynamic elements loaded from CSV
+            const dynamicButtons = container.querySelectorAll('.order-link');
+            dynamicButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    localStorage.setItem('prodTitle', this.getAttribute('data-title'));
+                    localStorage.setItem('prodPrice', this.getAttribute('data-price'));
+                    localStorage.setItem('prodImg', this.getAttribute('data-img'));
+                    window.location.href = 'oder.html';
+                });
+            });
+        }
+    });
+    </script>
+
+</body>
+</html>

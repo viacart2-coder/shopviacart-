@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viacart - Your Style, Your Bag</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="top-bar">
+        <p>Shop our new Arrivals</p>
+    </div>
+
+    <header class="main-header">
+        <div class="header-container">
+            
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="brand-box">
+                <div class="logo-circle">
+                    <span class="logo-text">Viacart</span> 
+                </div>
+                <h1 class="site-title">Viacart</h1>
+            </div>
+
+            <div class="controls-box">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                </div>
+                <div class="header-icons">
+                    <a href="#" aria-label="User Account"><i class="fa-regular fa-user"></i></a>
+                    <a href="#" aria-label="Wishlist"><i class="fa-regular fa-heart"></i></a>
+                    <a href="#" aria-label="Shopping Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="deal1.html">Deals</a></li>
+            <li><a href="help.html">Help us</a></li>
+            <li><a href="oder.html">Order now</a></li>
+             <li><a href="products.html">Bags</a></li>
+    </nav>
+    
+  <style>
+    .order-main-container {
+        width: 100%;
+        background-color: #fdfcfb;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 50px 20px;
+    }
+
+    .order-wrapper {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .checkout-form-section {
+        background: #ffffff;
+        padding: 35px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        border: 1px solid #f0eee9;
+    }
+
+    .checkout-form-section h2 {
+        font-size: 1.6rem;
+        color: #222;
+        margin-bottom: 25px;
+        border-bottom: 2px solid #72574a;
+        padding-bottom: 10px;
+    }
+
+    .order-form-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .order-field-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .order-field-group label {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #444;
+    }
+
+    .order-field-group input,
+    .order-field-group textarea,
+    .order-field-group select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        outline: none;
+        background-color: #fafafa;
+        transition: all 0.3s ease;
+    }
+
+    .order-field-group input:focus,
+    .order-field-group textarea:focus {
+        border-color: #72574a;
+        background-color: #fff;
+    }
+
+    .order-summary-section {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+        border: 1px solid #f0eee9;
+        height: fit-content;
+    }
+
+    .order-summary-section h3 {
+        font-size: 1.4rem;
+        color: #222;
+        margin-bottom: 20px;
+    }
+
+    .product-summary-card {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 20px;
+    }
+
+    .product-summary-card img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+
+    summary-details h4 {
+        font-size: 1.1rem;
+        color: #333;
+        margin: 0 0 5px 0;
+    }
+
+    .summary-details .summary-price {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #72574a;
+    }
+
+    .price-calculation {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .price-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 1rem;
+        color: #666;
+    }
+
+    .price-row.total {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #000;
+        border-top: 1px dashed #ddd;
+        padding-top: 15px;
+        margin-top: 5px;
+    }
+
+    .place-order-btn {
+        background-color: #72574a;
+        color: #fff;
+        border: none;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 25px;
+        transition: background 0.3s ease;
+    }
+
+    .place-order-btn:hover {
+        background-color: #5d463b;
+    }
+
+    @media (min-width: 768px) {
+        .order-wrapper {
+            grid-template-columns: 6fr 4fr;
+        }
+        .order-form-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+        .full-row {
+            grid-column: span 2;
+        }
+    }
+</style>
+
+<main class="order-main-container">
+    <div class="order-wrapper">
+        
+        <section class="checkout-form-section">
+            <h2>Billing & Shipping Details</h2>
+            <form id="checkoutForm" action="#" method="POST">
+                <div class="order-form-grid">
+                    
+                    <div class="order-field-group">
+                        <label for="cust-name">Full Name *</label>
+                        <input type="text" id="cust-name" placeholder="Apna pura naam likhein" required>
+                    </div>
+
+                    <div class="order-field-group">
+                        <label for="cust-phone">Phone Number *</label>
+                        <input type="tel" id="cust-phone" placeholder="03001234567" required>
+                    </div>
+
+                    <div class="order-field-group full-row">
+                        <label for="cust-email">Email Address (Optional)</label>
+                        <input type="email" id="cust-email" placeholder="name@email.com">
+                    </div>
+
+                    <div class="order-field-group full-row">
+                        <label for="cust-address">Complete Delivery Address *</label>
+                        <textarea id="cust-address" rows="3" placeholder="Ghar/Shop number, Gali, Area ka naam" required></textarea>
+                    </div>
+
+                    <div class="order-field-group">
+                        <label for="cust-city">City *</label>
+                        <input type="text" id="cust-city" placeholder="Lahore, Karachi, etc." required>
+                    </div>
+
+                    <div class="order-field-group">
+                        <label for="pay-method">Payment Method</label>
+                        <select id="pay-method">
+                            <option value="cod">Cash on Delivery (COD)</option>
+                        </select>
+                    </div>
+
+                </div>
+            </form>
+        </section>
+
+        <section class="order-summary-section">
+            <h3>Your Order</h3>
+            
+            <div class="product-summary-card">
+                <img id="orderProductImg" src="" alt="Product Image">
+                <div class="summary-details">
+                    <h4 id="orderProductTitle">Product Title</h4>
+                    <div class="summary-price" id="orderProductPrice">Rs 0</div>
+                </div>
+            </div>
+
+            <div class="price-calculation">
+                <div class="price-row">
+                    <span>Subtotal</span>
+                    <span id="subtotalPrice">Rs 0</span>
+                </div>
+                <div class="price-row">
+                    <span>Delivery Charges</span>
+                    <span style="color: #27ae60; font-weight: 600;">FREE</span>
+                </div>
+                <div class="price-row total">
+                    <span>Total</span>
+                    <span id="totalPrice">Rs 0</span>
+                </div>
+            </div>
+
+            <button type="submit" form="checkoutForm" class="place-order-btn">Confirm Order</button>
+        </section>
+
+    </div>
+</main>
+<script>
+    // 1. Page load hote hi product ka data localStorage se uthana
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTitle = localStorage.getItem('prodTitle');
+        const savedPrice = localStorage.getItem('prodPrice');
+        const savedImg = localStorage.getItem('prodImg');
+
+        if (savedTitle && savedPrice) {
+            document.getElementById('orderProductTitle').innerText = savedTitle;
+            document.getElementById('orderProductPrice').innerText = savedPrice;
+            document.getElementById('subtotalPrice').innerText = savedPrice;
+            document.getElementById('totalPrice').innerText = savedPrice;
+        }
+        if (savedImg) {
+            document.getElementById('orderProductImg').src = savedImg;
+        }
+    });
+
+    // 2. Form submit hone par saara data WhatsApp par bhejna
+    document.getElementById('checkoutForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Form fields se customer ka data nikalna
+        const name = document.getElementById('cust-name').value;
+        const phone = document.getElementById('cust-phone').value;
+        const email = document.getElementById('cust-email').value || "N/A";
+        const address = document.getElementById('cust-address').value;
+        const city = document.getElementById('cust-city').value;
+        
+        // Screen se product ki details nikalna
+        const productTitle = document.getElementById('orderProductTitle').innerText;
+        const productPrice = document.getElementById('orderProductPrice').innerText;
+
+        // Aapka WhatsApp number
+        const myWhatsAppNumber = "923328011280"; 
+
+        // Message ka design text
+        const message = `*New Order Received!* 🛍️%0A%0A` +
+                        `*Customer Details:*%0A` +
+                        `• Name: ${name}%0A` +
+                        `• Phone: ${phone}%0A` +
+                        `• Email: ${email}%0A` +
+                        `• Address: ${address}%0A` +
+                        `• City: ${city}%0A%0A` +
+                        `*Product Details:*%0A` +
+                        `• Item: ${productTitle}%0A` +
+                        `• Price: ${productPrice}%0A` +
+                        `• Total Amount: ${productPrice}%0A%0A` +
+                        `Kindly confirm my order. Thanks!`;
+
+        // WhatsApp application open karne ka link
+        const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+    });
+</script>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <p>Viacart brings you stylish, high-quality handbags designed for everyday elegance. Our goal is to offer trendy designs at affordable prices, so you can look confident wherever you go.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index1.html">Deals</a></li>
+                    <li><a href="oder.html">Bags</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p><i class="fa-regular fa-envelope"></i> Viacart2@gmail.com</p>
+                <p><i class="fa-solid fa-phone"></i> +92 332 8011280</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/923328011280" class="whatsapp-sticky" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="JavaScript.js"></script>
+
+</body>
+</html>
